@@ -53,12 +53,18 @@ function getTransactionHistory(account, cb){
     });
 }
 
-getTransactionHistory(frequent_receiver, function(response){
-  let data = getBalances(frequent_receiver, response).map(function(d){return d.balance}).reverse();
-  let title =  token.symbol.call() + ' balance for the last one month';
-  url = 'https://image-charts.com/chart?chs=500x190';
-  url+= '&chd=t:' + data.join();
-  url+= '&chds=a&cht=lc&chtt=' + title;
-  console.log('url', url);
-  return url
-})
+
+function getChart(account, cb){
+  getTransactionHistory(account, function(response){
+    let data = getBalances(account, response).map(function(d){return d.balance}).reverse();
+    let title =  token.symbol.call() + ' balance for the last one month';
+    url = 'https://image-charts.com/chart?chs=500x190';
+    url+= '&chd=t:' + data.join();
+    url+= '&chds=a&cht=lc&chtt=' + title;
+    cb(url)
+  })
+}
+
+module.exports = function (account, callback) {
+  getChart(account, callback)
+};
