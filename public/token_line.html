@@ -14,7 +14,7 @@
 
         google.charts.load('current', {'packages':['corechart']});
 
-        getChart(parsed.account, function(title, result){
+        getTokenChart(parsed.account, function(title, result){
           console.log('data', result)
           drawChart = function() {
             var data = new google.visualization.DataTable();
