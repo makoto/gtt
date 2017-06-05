@@ -8,7 +8,7 @@ This is your companion to guide you through the world of genesis tokens.
 
 ## Demo
 
-[INSERT YOUTUBE VIDEO]
+- https://drive.google.com/file/d/0ByFA8nA5C9rhZ0ZEYWlWbUVyZEk/view?usp=sharing
 
 
 ## Available commands
