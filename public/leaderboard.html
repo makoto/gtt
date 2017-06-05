@@ -29,6 +29,9 @@
         text-align:left;
         text-overflow:ellipsis;
       }
+      tr.your-sum{
+        background-color:pink;
+      }
     </style>
   </head>
   <body>
@@ -48,21 +51,17 @@
             <td class="key"><img v-bind:src="top.imgUrl">{{top.key}}</td>
             <td>{{top.sum}}</td>
           </tr>
+          <tr v-if="yourSum" class="your-sum">
+            <td>{{yourRank}}</td>
+            <td class="key"><img v-bind:src="yourImgUrl">{{yourKey}}</td>
+            <td>{{yourSum}}</td>
+          </tr>
         </table>
 
         <div v-if="!yourSum" style="width:95%" class="wallet you">
           <p>Wait a moment. Getting data from blockchain.</p>
           <img src="./giphy.gif">
         </div>
-
-
-        <table v-if="yourSum" style="width:95%" class="wallet">
-          <tr>
-            <td>{{yourRank}}</td>
-            <td class="key"><img v-bind:src="yourImgUrl">{{yourKey}}</td>
-            <td>{{yourSum}}</td>
-          </tr>
-        </table>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
