@@ -1,0 +1,116 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+    <title></title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="./blockies.js"></script>
+    <script type="text/javascript" src="../build/bundle.js" charset="utf-8"></script>
+    <link href="http://status.im/dapps/wallet/css/style.css" rel="stylesheet">
+    <link href="http://status.im/dapps/wallet/css/slick.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500,300,400" rel="stylesheet" type="text/css">
+    <style media="screen">
+      .wallets.wallets{
+        padding-top:0px;
+      }
+      td {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      td.key{
+        text-align:left;
+        text-overflow:ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="top-nav">
+        <h2>Leader board</h2>
+      </div>
+      <div class="wallets">
+        <table style="width:95%" class="wallet">
+          <tr>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Token</th>
+          </tr>
+          <tr v-for="top in tops">
+            <td>{{top.rank}}</td>
+            <td class="key"><img v-bind:src="top.imgUrl">{{top.key}}</td>
+            <td>{{top.sum}}</td>
+          </tr>
+        </table>
+
+        <div v-if="!yourSum" style="width:95%" class="wallet you">
+          <p>Wait a moment. Getting data from blockchain.</p>
+          <img src="./giphy.gif">
+        </div>
+
+
+        <table v-if="yourSum" style="width:95%" class="wallet">
+          <tr>
+            <td>{{yourRank}}</td>
+            <td class="key"><img v-bind:src="yourImgUrl">{{yourKey}}</td>
+            <td>{{yourSum}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      var loader = "<img src='./giphy.gif' style=\"display:block;margin:auto;\"></img>"
+      // console.log('loader', loader)
+      // $('#chart_div').html(loader)
+      var topData = {
+        tops:[],
+        total:0,
+        yourKey:null,
+        yourSum:null,
+        yourImgUrl:null,
+        yourRank:null
+      };
+      var app = new Vue({
+        el: '#app',
+        data: topData
+      })
+
+      getTokenRanking(10, parsed.account, function(result){
+        var total =  result['tops'].length;
+        console.log('result', result);
+        var sum;
+        if (result['your_rank']) {
+          sum = numeral(result['your_rank'].sum).format('0,0');
+        }
+
+        function getImgURL(address){
+          return blockies.create({
+            seed: address,
+            size: 5,
+            scale: 5,
+          }).toDataURL();
+        }
+        topData.total = result['tops'].length;
+        topData.yourSum = sum;
+        topData.yourKey = parsed.account;
+        topData.yourRank = result['your_rank'].rank;
+        topData.yourImgUrl = getImgURL(parsed.account);
+        topData.tops = result['tops'].map(function(t){
+          t.sum = numeral(t.sum).format('0,0');
+          t.imgUrl = getImgURL(top.key);
+          return t
+        })
+      });
+    });
+    </script>
+  </body>
+</html>
