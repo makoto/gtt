@@ -1,7 +1,7 @@
 {
-  "name": "balances",
+  "name": "Genesys Token Companion Dapp&Bot",
   "version": "1.0.0",
-  "description": "status version: 0.9.7-8 2 min video",
+  "description": "This is your companion to guide you through the world of genesis tokens",
   "main": "index.js",
   "scripts": {
     "build": "webpack lib/index.js build/bundle.js",
