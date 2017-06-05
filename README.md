@@ -1,6 +1,6 @@
 # Genesys Token Companion Dapp&Bot
 
-![Screenshot](./gtc.png)
+<img width="50%" src="./gtc.png"></img>
 
 ## What is this?
 
