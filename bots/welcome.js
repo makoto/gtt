@@ -8,7 +8,7 @@ status.command({
     description: 'Browse SGT token holder leaderboard',
     fullscreen: true,
     params: [{
-        name: "address",
+        name: "account",
         type: status.types.TEXT,
         placeholder: "SGT holding account address"
     }],
