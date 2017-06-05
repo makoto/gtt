@@ -1,5 +1,7 @@
 # Genesys Token Companion Dapp&Bot
 
+![Screenshot](./gtc.png)
+
 ## What is this?
 
 This is your companion to guide you through the world of genesis tokens.
