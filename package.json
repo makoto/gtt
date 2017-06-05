@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "etherscan-api": "^3.0.3",
     "express": "^4.15.3",
     "human-standard-token-abi": "^1.0.2",
     "mustache": "^2.3.0",
