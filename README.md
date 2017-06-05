@@ -9,9 +9,14 @@ This is your companion to guide you through the world of genesis tokens.
 [INSERT YOUTUBE VIDEO]
 
 
-## Available functions
+## Available commands
 
-- welcome message
+| command     | usage |
+|--- | --- |
+| leaderboard | list top 10 token earning accounts |
+| token_distribution | shows token distribution histogram |
+| your_eth | shows your eth balance as a line chart |
+| your_tokens | shows your token balance as a line chart |
 
 ## Usage
 
