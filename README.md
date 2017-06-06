@@ -15,7 +15,9 @@ From [Encoding the Status ‘Genesis Block’](https://blog.status.im/encoding-t
 
 SGT tokens are awarded to community members and all its transaction history are recorded into Ethereum  [mainnet](https://etherscan.io/token/0xd248b0d48e44aaf9c49aea0312be7e13a6dc1468)  
 
-The immutable contribution history gives a fair and open competition among would be community members. What's missing is a handy app to make their activities more visual and transparent, this is where GTT comes in.
+The immutable contribution history gives a fair and open competition among would be community members. I really like the idea of Genesis token and hope this sets a great standard which other ICO will follow the same path.
+
+What's missing is a handy app to make their activities more visual and transparent, this is where GTT comes in.
 
 With GTT, users can
 
