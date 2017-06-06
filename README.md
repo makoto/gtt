@@ -4,6 +4,7 @@
 
 Genesis token tracker(GTT) allows you to keep track of the token allocation of Status Genesis Token (symbol: SGT), an ERC20 token, which will be redeemable for Status Network Tokens (‘SNT’ — also an ERC20 token) when the Network is fully launched.
 
+
 ## Why GTT?
 
 From [Encoding the Status ‘Genesis Block’](https://blog.status.im/encoding-the-status-genesis-block-d73d287a750)
