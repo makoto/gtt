@@ -1,5 +1,5 @@
 {
-  "name": "Genesys Token Companion Dapp&Bot",
+  "name": "Genesis Token Tracker",
   "version": "1.0.0",
   "description": "This is your companion to guide you through the world of genesis tokens",
   "main": "index.js",
@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Makoto Inoue",
+  "license": "MIT",
   "dependencies": {
     "etherscan-api": "^3.0.3",
     "express": "^4.15.3",
