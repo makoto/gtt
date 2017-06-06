@@ -40,6 +40,7 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 
 ## Todo
 
+- add better welcome message.
 - add link to eth address and tokens.
 - save eth address so that you don't have to ask every time.
 
@@ -50,6 +51,12 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 - Allow users to scan barcode => Try `statusAPI.dispatch("webview-scan-qr", {callback: function(data) {...}});` https://github.com/status-im/wallet/blob/develop/src/cljs/token/transaction/page.cljs#L8
 - Try to `sendMessage` => Depending on https://github.com/status-im/status-react/pull/1272
 
+
+## FAQ
+
+- Why rendering is so slow? => Because it goes through the contract event every time each user hits. I could add caching layer easily but won't do it during this competition.
+
+- Why rendering eth transaction history is so much quicker than token history => Because I am cheating by hitting etherscan api. Going through block transaction was too slow to be useful.
 
 ## Dev guide
 
@@ -82,8 +89,8 @@ $ adb reverse tcp:8003 tcp:8003
 $ adb reverse tcp:8546 tcp:8546
 ```
 
-// add app
+###  add app to status.im
+
 ```
 $ status-dev-cli add '{"whisper-identity": "GTC",  "name": "Genesys Token Companion", "bot-url": "http://localhost:8003/bots/welcome.js"}' --ip $DEVICE_IP
-status-dev-cli remove '{"whisper-identity": "GTC",  "name": "Genesys Token Companion", "bot-url": "http://localhost:8003/bots/welcome.js"}' --ip $DEVICE_IP
-````
+```
