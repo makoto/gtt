@@ -9,9 +9,9 @@ Genesis token tracker(GTT) allows you to keep track of the token allocation of S
 
 From [Encoding the Status ‘Genesis Block’](https://blog.status.im/encoding-the-status-genesis-block-d73d287a750)
 
-```
-The value that lies within this Network isn’t money, but in thought and actions of the wonderful people of the Ethereum community, those who have shaped not only Status but who I am as well. They are the ones who truly believe in trustless, permissionless and decentralized systems, and what gives web3 meaning. They’ve done so with lengthy discussions, feedback and critiques, contributing to our development and the development of Ethereum, and even by doing community outreach — all these actions have value. But quantifying it is hard, so we intend to do this with our own subjectivity, and establish a web-of-trust.
-```
+
+> The value that lies within this Network isn’t money, but in thought and actions of the wonderful people of the Ethereum community, those who have shaped not only Status but who I am as well. They are the ones who truly believe in trustless, permissionless and decentralized systems, and what gives web3 meaning. They’ve done so with lengthy discussions, feedback and critiques, contributing to our development and the development of Ethereum, and even by doing community outreach — all these actions have value. But quantifying it is hard, so we intend to do this with our own subjectivity, and establish a web-of-trust.
+
 
 SGT tokens are awarded to community members and all its transaction history are recorded into Ethereum  [mainnet](https://etherscan.io/token/0xd248b0d48e44aaf9c49aea0312be7e13a6dc1468)  
 
@@ -29,7 +29,7 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 
 - WIP
 
-## Available commands
+## Available commands (all of them require an eth address as an argument)
 
 | command     | usage |
 |--- | --- |
@@ -40,7 +40,16 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 
 ## Todo
 
-- add link
+- add link to eth address and tokens.
+- save eth address so that you don't have to ask every time.
+
+## Nice to have
+
+- Prompt all available commands at init.
+- Save eth account so that you don't have to type for every command. => Depending on https://github.com/status-im/status-react/pull/1271
+- Allow users to scan barcode => Try `statusAPI.dispatch("webview-scan-qr", {callback: function(data) {...}});` https://github.com/status-im/wallet/blob/develop/src/cljs/token/transaction/page.cljs#L8
+- Try to `sendMessage` => Depending on https://github.com/status-im/status-react/pull/1272
+
 
 ## Dev guide
 
