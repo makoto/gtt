@@ -56,9 +56,21 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 
 ## FAQ
 
-- Why rendering is so slow? => Because it goes through the contract event every time each user hits. I could add caching layer easily but won't do it during this competition.
+### Why rendering is so slow?
 
-- Why rendering eth transaction history is so much quicker than token history => Because I am cheating by hitting etherscan api. Going through block transaction was too slow to be useful.
+Because it goes through the contract event every time each user hits. I could add caching layer easily but won't do it during this competition.
+
+### Why rendering eth transaction history is so much quicker than token history
+
+Because I am cheating by hitting etherscan api. Going through block transaction was too slow to be useful.
+
+### Will your dapp work without bot?
+
+It probably work. May not work on Infura/Metamask env because I wrote everything with synchronous call to web3.
+
+### Why Bot and Dapp approach?
+
+I initially tried to do everything via bot but quickly figured many of the features (access to contract events, the avility to write messages asnync using `sendEvent`, persist local variables, etc) were not available by the time I was implementing the feature (some of them were fixed during the competition). Rather than trying to spend the whole week debugging, I decided to take the pragmatic approach of building the core feature (charting functions) via Dapp and use Bot to help users navigate the Dapp.
 
 ## Dev guide
 
