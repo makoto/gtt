@@ -1,10 +1,10 @@
 {
-  "name": "Genesis Token Tracker",
+  "name": "genesis_token_tracker",
   "version": "1.0.0",
   "description": "This is your companion to guide you through the world of genesis tokens",
   "main": "index.js",
   "scripts": {
-    "build": "webpack lib/index.js build/bundle.js",
+    "build": "webpack lib/index.js doc/build/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
