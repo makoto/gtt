@@ -10103,6 +10103,7 @@ var apiKey = 'AN9EQIRIU7JUFQSKN25J2V37NMMB4DIMVI';
 var jQuery = __webpack_require__(58);
 const Mustache = __webpack_require__(59);
 const Web3 = __webpack_require__(22);
+// const provider = new Web3.providers.HttpProvider('http://localhost:8545')
 const provider = new Web3.providers.HttpProvider('http://localhost:8545')
 const web3 = new Web3(provider);
 

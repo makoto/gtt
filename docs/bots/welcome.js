@@ -3,7 +3,9 @@ status.addListener("init", function () {
 });
 
 function browse(command, params){
-  var url = 'http://localhost:8003/' + command + '.html?account=' + params.account
+  // var host = 'http://localhost:8003/'
+  var host = 'http://genesis-token-tracker.s3-website-us-west-2.amazonaws.com/'
+  var url = host + command + '.html?account=' + params.account
   return {
           title: "Browser",
           dynamicTitle: true,
