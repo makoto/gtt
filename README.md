@@ -43,7 +43,6 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 ## Todo
 
 - add better welcome message.
-- add link to eth address and tokens.
 - save eth address so that you don't have to ask every time.
 
 ## Nice to have

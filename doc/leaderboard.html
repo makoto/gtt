@@ -19,11 +19,20 @@
       .wallets.wallets{
         padding-top:0px;
       }
+      .wallets.wallets a{
+        padding-top:0px;
+        display:inline;
+        padding:10px;
+        font-size: 16px;
+      }
       td {
         max-width: 100px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+      td img{
+        vertical-align: middle;
       }
       td.key{
         text-align:left;
@@ -48,13 +57,13 @@
           </tr>
           <tr v-for="top in tops">
             <td>{{top.rank}}</td>
-            <td class="key"><img v-bind:src="top.imgUrl">{{top.key}}</td>
-            <td>{{top.sum}}</td>
+            <td class="key"><img v-bind:src="top.imgUrl"><a v-bind:href="top.ethUrl">{{top.key}}</a></td>
+            <td><a v-bind:href="top.tokenUrl">{{top.sum}}</a></td>
           </tr>
           <tr v-if="yourSum" class="your-sum">
             <td>{{yourRank}}</td>
-            <td class="key"><img v-bind:src="yourImgUrl">{{yourKey}}</td>
-            <td>{{yourSum}}</td>
+            <td class="key"><img v-bind:src="yourImgUrl"><a v-bind:href="yourEthUrl">{{yourKey}}</a></td>
+            <td><a v-bind:href="yourTokenUrl">{{yourSum}}</a></td>
           </tr>
         </table>
 
@@ -67,6 +76,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
     <script>
     $(document).ready(function() {
+
       var loader = "<img src='./giphy.gif' style=\"display:block;margin:auto;\"></img>"
       // console.log('loader', loader)
       // $('#chart_div').html(loader)
@@ -76,7 +86,9 @@
         yourKey:null,
         yourSum:null,
         yourImgUrl:null,
-        yourRank:null
+        yourRank:null,
+        yourEthUrl:null,
+        yourTokenUrl:null
       };
       var app = new Vue({
         el: '#app',
@@ -91,6 +103,14 @@
           sum = numeral(result['your_rank'].sum).format('0,0');
         }
 
+        function getEthUrl(address){
+          return './eth_line.html?account=' + address
+        }
+
+        function getTokenUrl(address){
+          return './token_line.html?account=' + address
+        }
+
         function getImgURL(address){
           return blockies.create({
             seed: address,
@@ -101,11 +121,15 @@
         topData.total = result['tops'].length;
         topData.yourSum = sum;
         topData.yourKey = parsed.account;
+        topData.yourEthUrl = getEthUrl(topData.yourKey);
+        topData.yourTokenUrl = getTokenUrl(topData.yourKey);
         topData.yourRank = result['your_rank'].rank;
-        topData.yourImgUrl = getImgURL(parsed.account);
+        topData.yourImgUrl = getImgURL(topData.yourKey);
         topData.tops = result['tops'].map(function(t){
           t.sum = numeral(t.sum).format('0,0');
-          t.imgUrl = getImgURL(top.key);
+          t.imgUrl = getImgURL(t.key);
+          t.ethUrl = getEthUrl(t.key);
+          t.tokenUrl = getTokenUrl(t.key);
           return t
         })
       });
