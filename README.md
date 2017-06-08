@@ -103,5 +103,5 @@ $ adb reverse tcp:8546 tcp:8546
 ###  add app to status.im
 
 ```
-$ status-dev-cli add '{"whisper-identity": "GTC",  "name": "Genesis Token Companion", "bot-url": "http://localhost:8003/bots/welcome.js"}' --ip $DEVICE_IP
+$ status-dev-cli add '{"whisper-identity": "GTC",  "name": "Genesis Token Tracker", "bot-url": "http://localhost:8003/bots/welcome.js"}' --ip $DEVICE_IP
 ```

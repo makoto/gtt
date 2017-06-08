@@ -1,5 +1,5 @@
 status.addListener("init", function () {
-  return {"text-message": "Welcome to Genesis Token Companion. ʕ•͡ᴥ•ʔ"};
+  return {"text-message": "Welcome to Genesis Token Tracker. ʕ•͡ᴥ•ʔ"};
 });
 
 function browse(command, params){
