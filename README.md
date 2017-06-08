@@ -31,6 +31,12 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 
 - https://youtu.be/biDJBA1UOUc
 
+## Supported Environment
+
+- Mist
+- Metamask
+- Status.im (did only work from my local machine connecting to device)
+
 ## Available commands (all of them require an eth address as an argument)
 
 | command     | usage |
