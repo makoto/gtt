@@ -81,7 +81,7 @@ npm run build
 // Make sure you use rospen testnet as some token addresses are hard coded.
 geth --testnet ...
 // start server
-cd doc; python -m SimpleHTTPServer 8003; cd ..
+cd docs; python -m SimpleHTTPServer 8003; cd ..
 ```
 
 ### Connect local devices
