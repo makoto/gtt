@@ -7824,9 +7824,14 @@ module.exports = {
 const token_address = '0x4bda828f1fe628973c39366263b78b7cd9d6d8fe'; // sgt
 const frequent_receiver = '0xa9af49f28fa939aa6d7a9683de9a4319d1d8ecba';
 const abi = __webpack_require__(27);
-const Web3 = __webpack_require__(22);
-const provider = new Web3.providers.HttpProvider('http://localhost:8545')
-const web3 = new Web3(provider);
+
+if (typeof web3 !== 'undefined') {
+  web3 = new Web3(web3.currentProvider);
+} else {
+  const Web3 = __webpack_require__(22);
+  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8546"));
+}
+
 const Token = web3.eth.contract(abi)
 const token = Token.at(token_address)
 const one_month_ago = 874999
@@ -10102,10 +10107,13 @@ var apiKey = 'AN9EQIRIU7JUFQSKN25J2V37NMMB4DIMVI';
 
 var jQuery = __webpack_require__(58);
 const Mustache = __webpack_require__(59);
-const Web3 = __webpack_require__(22);
-// const provider = new Web3.providers.HttpProvider('http://localhost:8545')
-const provider = new Web3.providers.HttpProvider('http://localhost:8545')
-const web3 = new Web3(provider);
+
+if (typeof web3 !== 'undefined') {
+  web3 = new Web3(web3.currentProvider);
+} else {
+  const Web3 = __webpack_require__(22);
+  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8546"));
+}
 
 var generateUrl = __webpack_require__(19).generateUrl;
 var getBalances = __webpack_require__(19).getBalances;
@@ -10157,9 +10165,14 @@ module.exports.getChart = getChart;
 
 token_address = '0x4bda828f1fe628973c39366263b78b7cd9d6d8fe';
 const abi = __webpack_require__(27);
-const Web3 = __webpack_require__(22);
-const provider = new Web3.providers.HttpProvider('http://localhost:8545')
-const web3 = new Web3(provider);
+
+if (typeof web3 !== 'undefined') {
+  web3 = new Web3(web3.currentProvider);
+} else {
+  const Web3 = __webpack_require__(22);
+  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8546"));
+}
+
 const Token = web3.eth.contract(abi);
 const token = Token.at(token_address);
 current_block =  web3.eth.blockNumber;
