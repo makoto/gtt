@@ -29,7 +29,7 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 
 ## Demo video
 
-- WIP
+- https://youtu.be/biDJBA1UOUc
 
 ## Available commands (all of them require an eth address as an argument)
 
