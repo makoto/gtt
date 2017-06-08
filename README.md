@@ -27,9 +27,10 @@ With GTT, users can
 
 GTT is probably the only dapp&bott which gives you the real value despite the fact that status.im is currently running under testnet. This is thanks to Status.im team keeping track the same transaction history on [testnet](https://ropsten.etherscan.io/token/0x4bda828f1fe628973c39366263b78b7cd9d6d8fe).
 
-## Demo video
+## Demo
 
-- https://youtu.be/biDJBA1UOUc
+- [Video](https://youtu.be/biDJBA1UOUc) = Via status.im bot
+- [Site][http://bit.ly/genesistokentracker]
 
 ## Supported Environment
 
@@ -45,19 +46,6 @@ GTT is probably the only dapp&bott which gives you the real value despite the fa
 | token_distribution | shows token distribution histogram |
 | your_eth | shows your eth balance as a line chart |
 | your_tokens | shows your token balance as a line chart |
-
-## Todo
-
-- add better welcome message.
-- save eth address so that you don't have to ask every time.
-
-## Nice to have
-
-- Prompt all available commands at init.
-- Save eth account so that you don't have to type for every command. => Depending on https://github.com/status-im/status-react/pull/1271
-- Allow users to scan barcode => Try `statusAPI.dispatch("webview-scan-qr", {callback: function(data) {...}});` https://github.com/status-im/wallet/blob/develop/src/cljs/token/transaction/page.cljs#L8
-- Try to `sendMessage` => Depending on https://github.com/status-im/status-react/pull/1272
-
 
 ## FAQ
 
@@ -111,3 +99,9 @@ $ adb reverse tcp:8546 tcp:8546
 ```
 $ status-dev-cli add '{"whisper-identity": "GTC",  "name": "Genesis Token Tracker", "bot-url": "http://localhost:8003/bots/welcome.js"}' --ip $DEVICE_IP
 ```
+
+"
+I would really really like to make a dynamic chat bot
+but every single feature that would allow some dynamic content seems to be missing, crippled, doesnt work, etc
+what's the point of the hackathon this way?
+"
