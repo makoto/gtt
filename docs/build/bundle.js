@@ -7827,8 +7827,10 @@ const abi = __webpack_require__(27);
 const Web3 = __webpack_require__(22);
 
 if (typeof web3 !== 'undefined') {
+  console.log('found')
   web3 = new Web3(web3.currentProvider);
 } else {
+  console.log('not found')
   web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8546"));
 }
 
@@ -7836,8 +7838,12 @@ const Token = web3.eth.contract(abi)
 const token = Token.at(token_address)
 const one_month_ago = 874999
 
-function balanceOf(account){
-  return token.balanceOf(account).toNumber();
+function getBalance(address){
+  return new Promise(function(resolve,reject){
+    return token.balanceOf.call(address, function(err, result){
+      return resolve(result)
+    })
+  });
 }
 
 function getBalances(balance, account, array){
@@ -7862,7 +7868,6 @@ function getBalances(balance, account, array){
     balance:initial_balance,
     timestamp: new Date()
   })
-  console.log('result', result);
   return result;
 }
 
@@ -7870,17 +7875,40 @@ function getTransactionHistory(account, cb){
   token
     .Transfer({_to:account},{fromBlock:one_month_ago})
     .get(function(error, logs){
-      logs = logs.reverse().map(function(l){
-        console.log('l', l)
-        return ({
-          value: l.args._value.toNumber(),
-          block: l.blockNumber,
-          from: l.args._from,
-          to: l.args._to,
-          timestamp: new Date(web3.eth.getBlock(l.blockNumber).timestamp * 1000)
+      // promised_logs = logs.map((l) =>{
+      //   console.log('l', l.blockNumber)
+      //   return new Promise((resolve, reject) => {
+      //     console.log('on promise')
+      //     web3.eth.getBlock(l.blockNumber, (error,block) =>{
+      //       console.log('l, block', l, block)
+      //       resolve(1)
+      //     })
+      //   });
+      // })
+
+      promised_logs = logs.map(l => {
+        return new Promise(function(fulfilled, rejected){
+          console.log('n', l);
+          web3.eth.getBlock(l.blockNumber, (error,block) =>{
+            console.log('l, block', l, block)
+            return fulfilled([l, block])
+          })
         })
       })
-      cb(logs)
+      Promise.all(promised_logs).then((values) => {
+        logs = values.reverse().map(function(value){
+          l = value[0]
+          block = value[1]
+          return ({
+            value: l.args._value.toNumber(),
+            block: l.blockNumber,
+            from: l.args._from,
+            to: l.args._to,
+            timestamp: new Date(block.timestamp * 1000)
+          })
+        })
+        cb(logs)
+      });
     });
 }
 
@@ -7893,10 +7921,13 @@ function generateUrl(title, data){
 
 function getChart(account, cb){
   getTransactionHistory(account, function(response){
-    let balance = balanceOf(account);
-    let data = getBalances(balance, account, response)
-    let title = token.symbol.call() + ' balance for the last one month';
-    cb(title, data)
+    getBalance(account).then(function(balance){
+      let data = getBalances(balance, account, response)
+      token.symbol.call((err, symbol)=>{
+        title = symbol + ' balance for the last one month';
+        cb(title, data);
+      })
+    })
   })
 }
 
@@ -7904,7 +7935,6 @@ module.exports.default = getChart;
 module.exports.getTransactionHistory = getTransactionHistory;
 module.exports.getBalances = getBalances;
 module.exports.getChart = getChart;
-module.exports.balanceOf = balanceOf;
 module.exports.generateUrl = generateUrl;
 
 // getTransactionHistory = require('./lib/token').getTransactionHistory;
@@ -10118,9 +10148,14 @@ if (typeof web3 !== 'undefined') {
 var generateUrl = __webpack_require__(19).generateUrl;
 var getBalances = __webpack_require__(19).getBalances;
 
-function balanceOf(account){
-  return web3.eth.getBalance(account).toNumber()
+function getBalance(address){
+  return new Promise(function(resolve,reject){
+    web3.eth.getBalance(address, function(err, result){
+      resolve(result)
+    })
+  });
 }
+
 
 function getTransactionHistory(account, cb){
   var view = {
@@ -10148,10 +10183,12 @@ function getTransactionHistory(account, cb){
 
 function getChart(account, cb){
   getTransactionHistory(account, function(response){
-    let balance = parseFloat(web3.fromWei(balanceOf(account)));
-    let data = getBalances(balance, account, response);
-    let title = account + ' balance history';
-    cb(title, data);
+    getBalance(account).then(function(_balance){
+      let balance = parseFloat(_balance);
+      let data = getBalances(balance, account, response)
+      let title = account + ' balance history';
+      cb(title, data)
+    })
   })
 }
 
@@ -10175,10 +10212,10 @@ if (typeof web3 !== 'undefined') {
 
 const Token = web3.eth.contract(abi);
 const token = Token.at(token_address);
-current_block =  web3.eth.blockNumber;
 one_month_ago = 874999;
 
 function aggregate(data){
+  console.log('aggregate', data)
   let participants = {}
   data.map(function(r){
     if(participants[r.args._to]){
@@ -10199,18 +10236,22 @@ function aggregate(data){
       values:values,
     })
   }
+  console.log('rankings', rankings)
   var sorted = rankings.sort(function(a,b){return a.sum - b.sum }).reverse();
   return sorted
 }
 
 function getAllEvents(cb){
+  console.log('one_month_ago', one_month_ago)
   tokenEvent = token.Transfer({},{fromBlock:one_month_ago})
   tokenEvent.get(function(error, logs){
+    console.log('aaa', logs)
     cb(aggregate(logs));
   });
 }
 
 function getTokenRanking(limit, account, cb){
+  console.log('getTokenRanking', limit, account, cb)
   var tops = []
   getAllEvents(function(sorted){
     if (limit == null){
