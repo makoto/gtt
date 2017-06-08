@@ -79,12 +79,10 @@ I initially tried to do everything via bot but quickly figured many of the featu
 ```
 // builds dapps
 npm run build
-// builds bot
-npm run build_bot
 // Make sure you use rospen testnet as some token addresses are hard coded.
 geth --testnet ...
 // start server
-python -m SimpleHTTPServer 8003
+cd doc; python -m SimpleHTTPServer 8003; cd ..
 ```
 
 ### Connect local devices
