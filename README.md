@@ -105,3 +105,8 @@ I would really really like to make a dynamic chat bot
 but every single feature that would allow some dynamic content seems to be missing, crippled, doesnt work, etc
 what's the point of the hackathon this way?
 "
+
+## Pull Request
+
+I am ready! This project is made from scratch for the https://hackathon.status.im .
+Please take full code in this as a judging consideration.
