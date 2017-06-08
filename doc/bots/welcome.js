@@ -3,7 +3,7 @@ status.addListener("init", function () {
 });
 
 function browse(command, params){
-  var url = 'http://localhost:8003/public/' + command + '.html?account=' + params.account
+  var url = 'http://localhost:8003/' + command + '.html?account=' + params.account
   return {
           title: "Browser",
           dynamicTitle: true,
