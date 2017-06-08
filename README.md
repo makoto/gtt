@@ -110,3 +110,7 @@ what's the point of the hackathon this way?
 
 I am ready! This project is made from scratch for the https://hackathon.status.im .
 Please take full code in this repo as a judging consideration.
+
+As mentioned on the readme, I wasn't able to connect to the deployed dapp from status.im.
+However, I tested in the following environment, and took [the video](https://youtu.be/biDJBA1UOUc) on the device.
+Hope this is good enough proof that the dapp and bot is working.
