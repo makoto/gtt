@@ -70,6 +70,9 @@ I initially tried to do everything via bot but quickly figured many of the featu
 ### Startup server
 
 ```
+git clone REPO_URL
+cd gtt
+npm install
 // builds dapps
 npm run build
 // Make sure you use rospen testnet as some token addresses are hard coded.
