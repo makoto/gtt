@@ -1,6 +1,5 @@
 # Genesis Token Tracker (GTT)
 
-
 {"whisper-identity": "31-genesis-token-tracker",
  "name":             "#31 Genesis Token Tracker (GTT)",
  "dapp-url":         "http://bit.ly/genesistokentracker",
@@ -65,7 +64,7 @@ Because I am cheating by hitting etherscan api. Going through block transaction 
 
 ### Will your dapp work without bot?
 
-It probably work. May not work on Infura/Metamask env because I wrote everything with synchronous call to web3.
+Yes.
 
 ### Why Bot and Dapp approach?
 
