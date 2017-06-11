@@ -1,5 +1,11 @@
 # Genesis Token Tracker (GTT)
 
+
+{"whisper-identity": "31-genesis-token-tracker",
+ "name":             "#31 Genesis Token Tracker (GTT)",
+ "dapp-url":         "http://bit.ly/genesistokentracker",
+ "bot-url":          "http://genesis-token-tracker.s3-website-us-west-2.amazonaws.com/bots/welcome.js"}
+
 <img width="50%" src="./gtc.png"></img>
 
 Genesis token tracker(GTT) allows you to keep track of the token allocation of Status Genesis Token (symbol: SGT), an ERC20 token, which will be redeemable for Status Network Tokens (‘SNT’ — also an ERC20 token) when the Network is fully launched.
